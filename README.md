@@ -36,14 +36,6 @@ Each project will have its own folder containing:
 
 ---
 
-## 📖 How to Use
-
-Clone the repository:
-```bash
-git clone https://github.com/joaoricteixeira/42CommonCore.git
-
----
-
 ## 📜 License
 
 All projects here are part of the 42Porto curriculum and are for educational purposes only.
@@ -57,3 +49,9 @@ João Ricardo Teixeira
 42Porto Cadet | Passionate about low-level programming and problem-solving
 
     GitHub: joaoricteixeira
+
+## 📖 How to Use
+
+Clone the repository:
+```bash
+git clone https://github.com/joaoricteixeira/42CommonCore.git
