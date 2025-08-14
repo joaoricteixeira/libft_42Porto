@@ -25,3 +25,35 @@ Each project will have its own folder containing:
 - **`includes/`** – header files (if applicable)
 - **`Makefile`** – to build the project
 - **`README.md`** – project-specific description, usage, and grading information
+
+## 🛠️ Technologies
+
+- **C** (primary language)
+- **Bash / Shell scripting**
+- **Make**
+- **Git / GitHub**
+- **Vim / Emacs / VSCode** (depending on preference)
+
+---
+
+## 📖 How to Use
+
+Clone the repository:
+```bash
+git clone https://github.com/joaoricteixeira/42CommonCore.git
+
+---
+
+## 📜 License
+
+All projects here are part of the 42Porto curriculum and are for educational purposes only.
+Please follow the 42 Network’s guidelines and do not copy code for submission.
+
+---
+
+## ✍️ Author
+
+João Ricardo Teixeira
+42Porto Cadet | Passionate about low-level programming and problem-solving
+
+    GitHub: joaoricteixeira
