@@ -36,6 +36,13 @@ Each project will have its own folder containing:
 
 ---
 
+| Project | Description | Status |
+|---------|-------------|--------|
+| **libft** | Recreating standard C library functions | ⏳ In Progress |
+| ... | More Common Core projects | 🔜 Coming soon |
+
+---
+
 ## 📜 License
 
 All projects here are part of the 42Porto curriculum and are for educational purposes only.
