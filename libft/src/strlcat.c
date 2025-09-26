@@ -1,11 +1,12 @@
 #include <stdio.h>
 
-size_t strlcat(char * dst, const char * src, size_t size)
+size_t ft_strlcat(char * dst, const char * src, size_t size)
 {
 	size_t dst_len = 0;
 	size_t src_len = 0;
 	size_t i;
 
+	i = 0;
 	//Calculate lenght of dst
 	while(dst_len < size && dst[dst_len] != '\0')
 		dst_len++;
