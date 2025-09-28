@@ -21,5 +21,9 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char * dst, const char * src, size_t size);
 int		ft_atoi(const char *str);
 int		ft_toupper(int str);
+int		ft_tolower(int str);
+char	*ft_strchr(const char *str, int c);
+int		ft_strncmp(const char *str1, const char *str2, size_t n);
+void	*memchr(const void *str, int c, size_t n);
 
 #endif
