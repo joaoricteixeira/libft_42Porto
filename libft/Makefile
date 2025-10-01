@@ -38,6 +38,13 @@ $(NAME): $(OBJ)
 clean:
 	rm -rf $(OBJ_DIR)
 
+# Full clean (objects + library)
+fclean: clean
+	rm -f $(NAME)
+
+# Rebuild everything
+re: fclean all
+
 # Colors
 GREEN=\033[0;32m
 RED=\033[0;31m
