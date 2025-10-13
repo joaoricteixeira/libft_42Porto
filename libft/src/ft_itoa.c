@@ -13,33 +13,70 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int	nlen(int n)
+int	nlen(long n)
 {
-	int	i;
+	long	i;
+
+	i = 0;
 	if (n < 0)
+	{
 		i++;
-	while 
-	
+		n = -n;
+	}
+	while (n > 0)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
+}
+
+char	*zero_malloc(void)
+{
+	char	*s;
+
+	s = malloc(2);
+	if (s == NULL)
+		return (NULL);
+	s[0] = '0';
+	s[1] = '\0';
+	return (s);
 }
 
 char	*ft_itoa(int n)
 {
 	char	*buffer;
-	int		len;
-	int		sign;
-	size_t	temp;
+	int		i;
+	long	num;
 
-	len = 0;
-	temp = n;
-	while (temp > 0)
-	{
-		temp = temp / 10;
-		len++;
-	}
-	buffer = malloc(len + 1);
+	num = n;
+	i = nlen(num);
+	if (n == 0)
+		return (zero_malloc());
+	else
+		buffer = malloc(i + 1);
 	if (buffer == NULL)
 		return (NULL);
-	
-
+	buffer[i] = '\0';
+	if (num < 0)
+	{
+		buffer[0] = '-';
+		num = -num;
+	}
+	while (num > 0)
+	{
+		buffer[i - 1] = (num % 10) + '0';
+		num = num / 10;
+		i--;
+	}
 	return (buffer);
 }
+/*
+#include <stdio.h>
+#include <stdlib.h>
+int	main(int argc, char **argv)
+{
+	(void)argc;
+	printf("%s\n", ft_itoa(atoi(argv[1])));
+	return (0);
+}*/
