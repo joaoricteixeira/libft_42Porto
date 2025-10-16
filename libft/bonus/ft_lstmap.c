@@ -1,43 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joateixe <joateixe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/13 15:45:56 by joateixe          #+#    #+#             */
-/*   Updated: 2025/10/13 16:28:23 by joateixe         ###   ########.fr       */
+/*   Created: 2025/10/16 20:34:11 by joateixe          #+#    #+#             */
+/*   Updated: 2025/10/16 20:37:05 by joateixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+t_list	*ft_lstmap(t_list *lst, void*(*f)(void*), void(*del)(void*))
 {
-	char	*str;
-	int		i;
-	int		j;
+	t_list	*head = NULL;
+	t_list	*node;
+	void	*content;
 
-	if (!s1)
+	if (!lst || !f || !del)
 		return (NULL);
-	if (!set)
-		return (ft_strdup(s1));
-	i = 0;
-	j = (ft_strlen(s1) - 1);
-	while (s1[i] && ft_strchr(set, s1[i]))
-		i++;
-	while (s1[i] && ft_strchr(set, s1[j]))
-		j--;
-	str = ft_substr(s1, i, ((j - i) + 1));
-	return (str);
+	while (lst)
+	{
+		content = f(lst->content);
+		node = ft_lstnew(content);
+		if (!node)
+		{
+			del(content);
+			ft_lstclear(&head, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&head, node);
+		lst = lst->next;
+	}
+	return (head);
 }
-/*
-int	main(void)
-{
-	char	*str;
-	char	*set;
-
-	str = "-+------+Hello-+--++";
-	set = "-+";
-	printf("%s\n", ft_strtrim(str, set));
-}*/

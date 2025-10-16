@@ -1,43 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joateixe <joateixe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/13 15:45:56 by joateixe          #+#    #+#             */
-/*   Updated: 2025/10/13 16:28:23 by joateixe         ###   ########.fr       */
+/*   Created: 2025/10/16 19:29:16 by joateixe          #+#    #+#             */
+/*   Updated: 2025/10/16 19:31:49 by joateixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+int	ft_lstsize(t_list *lst)
 {
-	char	*str;
-	int		i;
-	int		j;
+	int	i;
 
-	if (!s1)
-		return (NULL);
-	if (!set)
-		return (ft_strdup(s1));
 	i = 0;
-	j = (ft_strlen(s1) - 1);
-	while (s1[i] && ft_strchr(set, s1[i]))
+	while (lst)
+	{
 		i++;
-	while (s1[i] && ft_strchr(set, s1[j]))
-		j--;
-	str = ft_substr(s1, i, ((j - i) + 1));
-	return (str);
+		lst = lst->next;
+	}
+	return (i);
 }
-/*
-int	main(void)
-{
-	char	*str;
-	char	*set;
-
-	str = "-+------+Hello-+--++";
-	set = "-+";
-	printf("%s\n", ft_strtrim(str, set));
-}*/

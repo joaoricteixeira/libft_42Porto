@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -I includes
 
 # Directories
 SRC_DIR = src
-TEST_DIR = tests
+BONUS_DIR = bonus
 OBJ_DIR = obj
 
 # Library
@@ -14,25 +14,36 @@ NAME = libft.a
 SRC = $(wildcard $(SRC_DIR)/*.c)
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-# Test files
-TESTS = $(wildcard $(TEST_DIR)/*.c)
-TEST_OBJS = $(TESTS:$(TEST_DIR)/%.c=$(OBJ_DIR)/%.o)
-TEST_BIN = $(TESTS:$(TEST_DIR)/%.c=%.out)
+BONUS_SRC = $(wildcard $(BONUS_DIR)/*.c)
+BONUS_OBJ = $(BONUS_SRC:$(BONUS_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-# Default target
+# Colors for tests
+GREEN = \033[0;32m
+RED = \033[0;31m
+NC = \033[0m
+
+# Build Library
 all: $(NAME)
 
 # Create object directory if it doesn't exist
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-# Compile libft objects
+# Compile source objects
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Build the library
+# Compile bonus objects
+$(OBJ_DIR)/%.o: $(BONUS_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Build library (mandatory)
 $(NAME): $(OBJ)
 	ar rcs $@ $^
+
+# Build library with bonus objects
+bonus: $(OBJ) $(BONUS_OBJ)
+	ar rcs $(NAME) $^
 
 # Clean object files
 clean:
@@ -45,19 +56,15 @@ fclean: clean
 # Rebuild everything
 re: fclean all
 
-# Colors
-GREEN=\033[0;32m
-RED=\033[0;31m
-NC=\033[0m  # No color
-
-.PHONY: all clean fclean re tests
-
+# Run tests (optional, not required by Francinette)
 tests: $(NAME) | $(OBJ_DIR)
 	@echo "Running tests..."
-	@for test in $(TESTS); do \
+	@for test in $(wildcard tests/*.c); do \
 		bin=$(OBJ_DIR)/$$(basename $$test .c).out; \
 		echo "Compiling $$test -> $$bin"; \
 		$(CC) $(CFLAGS) $$test $(NAME) -o $$bin; \
 		echo -n "Running $$bin... "; \
 		./$$bin && echo -e "$(GREEN)[PASS]$(NC)" || echo -e "$(RED)[FAIL]$(NC)"; \
 	done
+
+.PHONY: all clean fclean re bonus tests
