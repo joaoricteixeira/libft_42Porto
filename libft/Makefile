@@ -1,70 +1,48 @@
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I includes
+CFLAGS = -Wall -Wextra -Werror
 
-# Directories
-SRC_DIR = src
-BONUS_DIR = bonus
-OBJ_DIR = obj
+# Source, bonus and object files
+SRCS = ft_atoi.c ft_putendl_fd.c ft_strlcpy.c ft_tolower.c \
+ft_bzero.c ft_isprint.c ft_putnbr_fd.c ft_memchr.c \
+ft_putstr_fd.c ft_strlen.c ft_toupper.c ft_calloc.c ft_itoa.c ft_memcmp.c \
+ft_split.c ft_isalnum.c ft_memcpy.c ft_strchr.c ft_strmapi.c \
+ft_strncmp.c ft_isalpha.c ft_memmove.c ft_strdup.c ft_strnstr.c \
+ft_striteri.c ft_strrchr.c ft_isascii.c ft_memset.c ft_strjoin.c \
+ft_strlcat.c ft_strtrim.c ft_isdigit.c ft_putchar_fd.c ft_substr.c 
+
+BONUS_SRCS = ft_lstnew.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
+	  ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c
+OBJS = $(patsubst %.c,%.o,$(SRCS))
+BONUS_OBJS = $(patsubst %.c,%.o,$(BONUS_SRCS))
 
 # Library
 NAME = libft.a
 
-# Source and object files
-SRC = $(wildcard $(SRC_DIR)/*.c)
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-
-BONUS_SRC = $(wildcard $(BONUS_DIR)/*.c)
-BONUS_OBJ = $(BONUS_SRC:$(BONUS_DIR)/%.c=$(OBJ_DIR)/%.o)
-
-# Colors for tests
-GREEN = \033[0;32m
-RED = \033[0;31m
-NC = \033[0m
-
 # Build Library
 all: $(NAME)
 
-# Create object directory if it doesn't exist
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
-
-# Compile source objects
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# Compile bonus objects
-$(OBJ_DIR)/%.o: $(BONUS_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJS) $(BONUS_OBJS): %.o: %.c
+	$(CC) $(CFLAGS) -c $<
 
 # Build library (mandatory)
-$(NAME): $(OBJ)
+$(NAME): $(OBJS)
 	ar rcs $@ $^
 
 # Build library with bonus objects
-bonus: $(OBJ) $(BONUS_OBJ)
+bonus: $(OBJS) $(BONUS_OBJS)
+	touch $@
 	ar rcs $(NAME) $^
 
 # Clean object files
 clean:
-	rm -rf $(OBJ_DIR)
+	rm -f $(OBJS)
 
 # Full clean (objects + library)
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) bonus
 
 # Rebuild everything
 re: fclean all
 
-# Run tests (optional, not required by Francinette)
-tests: $(NAME) | $(OBJ_DIR)
-	@echo "Running tests..."
-	@for test in $(wildcard tests/*.c); do \
-		bin=$(OBJ_DIR)/$$(basename $$test .c).out; \
-		echo "Compiling $$test -> $$bin"; \
-		$(CC) $(CFLAGS) $$test $(NAME) -o $$bin; \
-		echo -n "Running $$bin... "; \
-		./$$bin && echo -e "$(GREEN)[PASS]$(NC)" || echo -e "$(RED)[FAIL]$(NC)"; \
-	done
-
-.PHONY: all clean fclean re bonus tests
+.PHONY: all clean fclean re
