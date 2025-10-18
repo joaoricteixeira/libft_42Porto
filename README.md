@@ -1,64 +1,15 @@
-# 42CommonCore
+# Libft
 
-A collection of projects completed as part of the **42Porto Common Core** curriculum.  
-This repository serves as a central hub to track my learning journey, document my solutions, and share code for the various assignments from the program.
-
----
-
-## 📚 About 42 Common Core
-
-The 42 Common Core is an intensive, project-based curriculum designed to teach:
-- Problem solving and algorithmic thinking
-- Low-level programming in C
-- Unix/Linux systems and shell scripting
-- Version control with Git
-- Teamwork and peer learning
-
-All projects are built **from scratch**, without relying on external libraries (unless explicitly allowed), and are peer-reviewed by fellow students.
+Libft is a custom C library that reimplements a set of standard C library functions, along with additional utilities for memory management, string manipulation, linked lists, and more.  
+This project serves as a foundational library for future 42 school projects.
 
 ---
 
-## 📂 Repository Structure
+## 🧩 Overview
 
-Each project will have its own folder containing:
-- **`src/`** – source code
-- **`includes/`** – header files (if applicable)
-- **`Makefile`** – to build the project
-- **`README.md`** – project-specific description, usage, and grading information
+The goal of this project is to code a C library that contains a collection of general-purpose functions — some of which are part of the standard C library, and others that are useful additions.
 
-## 🛠️ Technologies
+Libft is divided into two parts:
 
-- **C** (primary language)
-- **Bash / Shell scripting**
-- **Make**
-- **Git / GitHub**
-- **Vim / Emacs / VSCode** (depending on preference)
-
----
-
-| Project | Description | Status |
-|---------|-------------|--------|
-| **libft** | Recreating standard C library functions | ⏳ In Progress |
-| ... | More Common Core projects | 🔜 Coming soon |
-
----
-
-## 📜 License
-
-All projects here are part of the 42Porto curriculum and are for educational purposes only.
-Please follow the 42 Network’s guidelines and do not copy code for submission.
-
----
-
-## ✍️ Author
-
-João Ricardo Teixeira
-42Porto Cadet | Passionate about low-level programming and problem-solving
-
-    GitHub: joaoricteixeira
-
-## 📖 How to Use
-
-Clone the repository:
-```bash
-git clone https://github.com/joaoricteixeira/42CommonCore.git
+1. **Part 1:** Reimplementation of standard libc functions (e.g., `memset`, `strdup`, `atoi`, etc.).
+2. **Part 2:** Creation of additional useful functions and data structures (e.g., linked list utilities).
