@@ -31,3 +31,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	dst[i] = '\0';
 	return (srclen);
 }
+/*The function copies characters from the NUL-terminated string src
+* to dest Nul-terminated result. The return is the total lenght of
+* the string it tried to create */

@@ -36,7 +36,7 @@ bonus: $(OBJS) $(BONUS_OBJS)
 
 # Clean object files
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 # Full clean (objects + library)
 fclean: clean

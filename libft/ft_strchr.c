@@ -29,3 +29,9 @@ char	*ft_strchr(const char *str, int c)
 		return ((char *)(str + i));
 	return (NULL);
 }
+/*the function returns a pointer to the first
+* occurence of the character in c in the string str.
+* Or NULL if the character is not found. The terminated
+* NULL byte is considered a part of the string so that if
+* c is specified as '\0', these functions return a pointer
+* to the terminator */

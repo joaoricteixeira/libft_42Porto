@@ -23,3 +23,6 @@ void	*ft_memset(void *str, int c, size_t n)
 		*s++ = v;
 	return (str);
 }
+
+/* memset -> function fills the first n bytes of memory area pointed
+* to by str with the constant byte c, */

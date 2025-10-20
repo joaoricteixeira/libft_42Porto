@@ -29,3 +29,7 @@ void	*ft_memchr(const void *str, int c, size_t n)
 	}
 	return (NULL);
 }
+/*the function scans the initial n bytes of memory area
+* pointed to by s for the first instance of c. Both c and
+* the bytes of memory area pointed by s are interpreted as
+* unsigned char*/

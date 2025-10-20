@@ -35,3 +35,7 @@ void	*ft_calloc(size_t nitems, size_t size)
 	}
 	return (ptr);
 }
+/*the function allocates memory for an array
+* of elements of size byte each and returns
+* a pointer to the allocated memory. The memory
+* is set to zero.*/

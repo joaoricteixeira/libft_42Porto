@@ -35,10 +35,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[dst_len + i] = '\0';
 	return (dst_len + src_len);
 }
-
-/*Calculate lenght of dst
-* Calculate lenght of src
-* If dst_len ++ size, there is no space to append
-* Append src to dst, but leave space for Null Terminator
-* Null terminated dst
-* return the total length it tried to create*/
+/*the function appends the NUL-terminated string src
+* to the dst, nul-terminated. It returns the lenght
+* of the string it tried to create (dst + src)*/
